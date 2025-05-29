@@ -21,13 +21,18 @@ public class CarTable {
     private Long id;
     @NotBlank
     @NotNull
-    private String propretario;
-    private Long cpf;
+    private String proprietario;
+    @NotBlank
+    @NotNull
+    @Column(unique = true)
+    private String cpf;
+    @NotBlank
+    @NotNull
+    @Column(unique = true)
     private String placa;
     private String marca;
     private String modelo;
     private String chassi;
     private Boolean licenciado;
-
 
 }
