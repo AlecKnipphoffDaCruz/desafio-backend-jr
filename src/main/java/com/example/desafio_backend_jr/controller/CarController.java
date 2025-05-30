@@ -25,9 +25,12 @@ public class CarController {
     @PostMapping
     public ResponseEntity<String> postCar(@RequestBody CarDtoRequest dtoRequest){
         CarTable response = apiService.getData(dtoRequest);
-
-        carRepository.save(response);
-        return ResponseEntity.ok("Carro cadastrado com sucesso");
-    }
+        try {
+            carRepository.save(response);
+            return ResponseEntity.ok("Carro cadastrado com sucesso");
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+        }
 
 }
