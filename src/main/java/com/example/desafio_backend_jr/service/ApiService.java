@@ -25,19 +25,15 @@ public class ApiService {
         String url = "https://my.api.mockaroo.com/veiculos?key=55ad1cd0&placa="+ placa;
 
         CarTable responseEntity = restTemplate.getForObject(url, CarTable.class);
-        String marca = responseEntity.getMarca();
-        String modelo = responseEntity.getModelo();
-        String chassi = responseEntity.getChassi();
-        Boolean licenciado = responseEntity.getLicenciado();
         CarTable response = new CarTable();
         response.setId(carDtoRequest.id());
         response.setCpf(carDtoRequest.cpf());
         response.setProprietario(carDtoRequest.proprietario());
         response.setPlaca(carDtoRequest.placa());
-        response.setMarca(marca);
-        response.setModelo(modelo);
-        response.setChassi(chassi);
-        response.setLicenciado(licenciado);
+        response.setMarca(responseEntity.getMarca());
+        response.setModelo(responseEntity.getModelo());
+        response.setChassi(responseEntity.getChassi());
+        response.setLicenciado(responseEntity.getLicenciado());
 
         return response;
     }

@@ -29,7 +29,7 @@ public class CarController {
             carRepository.save(response);
             return ResponseEntity.ok("Carro cadastrado com sucesso");
         } catch (RuntimeException e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.badRequest().body("Error: "+e);
         }
         }
 
